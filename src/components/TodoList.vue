@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { inject } from "vue";
 
-import { todosKey } from "../useTodo";
+import { todosKey, addTodoKey } from "../useTodo";
 
 const todos = inject(todosKey, []);
 
-const addTodo = (title: string) => {
-  console.log(title);
+const addTodo = inject(addTodoKey, (title: string) => {});
+
+const handleAddClick = (title: string) => {
+  addTodo(title);
 };
 </script>
 
@@ -20,7 +22,7 @@ const addTodo = (title: string) => {
         {{ todo.title }}
       </li>
     </ul>
-    <button @click="addTodo('add!')">Add</button>
+    <button @click="handleAddClick('add!')">Add</button>
   </div>
 </template>
 

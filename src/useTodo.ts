@@ -16,3 +16,15 @@ const defaultTodos: Todo[] = [
 ];
 
 export const todos = ref<Todo[]>(defaultTodos);
+
+export const addTodoKey: InjectionKey<(title: string) => {}> = Symbol();
+
+/** Todoを追加する関数 */
+export const addTodo = (title: string) => {
+  const newTodo: Todo = {
+    id: Math.random(),
+    title: title,
+  };
+
+  todos.value.push(newTodo);
+};

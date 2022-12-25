@@ -2,9 +2,10 @@
 import { provide } from "vue";
 
 import TodoList from "./components/TodoList.vue";
-import { todosKey, todos } from "./useTodo";
+import { todosKey, todos, addTodoKey, addTodo } from "./useTodo";
 
 provide(todosKey, todos.value);
+provide(addTodoKey, addTodo);
 </script>
 
 <template>
